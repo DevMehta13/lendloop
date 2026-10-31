@@ -485,11 +485,13 @@ After the code is written, fill in the **Line** column so you can jump straight 
 **Done when:** every team member can deploy a contract in Remix VM and read an event in the logs.
 
 ### Phase 1 — Helper files (½ day)
-- [ ] Write `Owned.sol`, `IReputation.sol`, `LateFee.sol` (code in Section 4 is complete)
-- [ ] Compile all three with zero errors
-- [ ] Sanity test for `LateFee`: temporarily make a tiny test contract with a `public pure` wrapper, or just check it later via the settlement amounts
+- [x] Write `Owned.sol`, `IReputation.sol`, `LateFee.sol` (code in Section 4 is complete)
+- [x] Compile all three with zero errors
+- [x] Sanity test for `LateFee`: checked with a temporary pure wrapper on a local test blockchain
 
 **Done when:** all three compile.
+
+**Completed 31 October 2026:** Solidity 0.8.24 compiled all three helpers and a temporary verification contract with no errors or warnings. Ownership initialization, transfer events, access restrictions, and nine late-fee scenarios passed. See `docs/phase-1-verification.md` for results.
 
 ### Phase 2 — Reputation contract (½ day)
 - [ ] Implement `Reputation.sol` per Section 4.4
