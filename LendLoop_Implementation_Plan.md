@@ -598,6 +598,11 @@ Serve it with `python3 -m http.server 8000` and open http://localhost:8000.
 
 ### Phase 7 — *(Optional)* Sepolia deployment (½ day)
 Only if you want real transaction links on Etherscan.
+
+**Started 31 October 2026:** deployment artifacts, a read-only network/funding preflight, a small-value local rehearsal, and the public deployment runbook are prepared in `docs/phase-7-verification.md`. Public deployment is pending because funded Sepolia accounts are not yet available. Local preparation does not complete this phase.
+
+- [x] Prepare pinned compiler artifacts, network/funding checks, and shortened-demo instructions
+- [x] Verify the small-value demo locally (see Phase 7 verification)
 - [ ] Fund 3–4 MetaMask accounts with Sepolia ETH (Section 2.3)
 - [ ] Remix → Environment **"Injected Provider - MetaMask"** (MetaMask on Sepolia)
 - [ ] Deploy Reputation → LendLoop (use `_timeUnit = 60`) → `setLendLoop`
@@ -605,9 +610,12 @@ Only if you want real transaction links on Etherscan.
 - [ ] Run a shortened demo; save the Sepolia Etherscan links in the README
 
 ### Phase 8 — Report and viva prep (½–1 day)
-- [ ] Write the report (Section 9)
-- [ ] Finalise README: project summary, how to run, concept map, screenshots
-- [ ] Every team member practises the demo and the viva questions (Section 10)
+**Prepared 31 October 2026:** all authoring work is complete: the 12-page report (`output/pdf/LendLoop_Report.pdf`), editable source (`docs/report.md`), finalized README, and demo/viva guide (`docs/viva-preparation.md`). Validation is recorded in `docs/phase-8-verification.md`. Personal practice and missing academic identity details remain human handoff items; no team practice is claimed. Optional Phase 7 public deployment remains pending and is not required to author this report.
+
+- [x] Write the report (Section 9), including test results, screenshots and all 44 concepts
+- [x] Finalise README: project summary, how to run, concept map, screenshots
+- [x] Prepare demo narration, viva answers, recovery steps and individual practice/sign-off sheet
+- [ ] Every team member practises the demo and the viva questions (Section 10); record actual sign-off in the guide
 
 ---
 

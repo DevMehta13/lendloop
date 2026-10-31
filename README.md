@@ -4,7 +4,7 @@ Peer-to-peer campus item lending with smart-contract deposits.
 
 ## Current progress
 
-Phases 1–6 are complete. The escrow supports listing, reputation-discounted rentals, full cancellation refunds, handover/return, late-fee settlement, timeouts, admin-resolved disputes, participant ratings, and withdrawals. Two scripted rehearsals in fresh Remix VMs verify the complete demo; screenshots and all 44 lab concept line references are included. The optional Phase 6 wallet interface is implemented and verified locally.
+Phases 1–6 and the Phase 8 report/viva materials are complete. Phase 7 public deployment awaits funded accounts; individual team practice remains to be signed off. The escrow supports listing, reputation-discounted rentals, full cancellation refunds, handover/return, late-fee settlement, timeouts, admin-resolved disputes, participant ratings, and withdrawals. Two scripted rehearsals in fresh Remix VMs verify the complete demo; screenshots and all 44 lab concept line references are included. The optional Phase 6 wallet interface is implemented and verified locally.
 
 | File | Purpose |
 |---|---|
@@ -15,6 +15,15 @@ Phases 1–6 are complete. The escrow supports listing, reputation-discounted re
 | `contracts/Reputation.sol` | Completion records, one rating per rental/rater, average ratings, and reputation-based deposit discounts |
 
 All files use `pragma solidity ^0.8.24`, require no external Solidity imports, and include `[LAB]` concept comments.
+
+
+## Phase 8 — Report and viva preparation
+
+The [12-page project report](output/pdf/LendLoop_Report.pdf) covers the problem, architecture, rental states, accounting, all 44 lab concepts, selected screenshots, all 21 planned test results, security, limitations and future scope. The [editable report](docs/report.md) and [demo/viva guide](docs/viva-preparation.md) accompany it. The guide includes a presentation script, numerical examples, 40 short-answer questions, recovery steps and an individual practice sheet.
+
+See [Phase 8 verification](docs/phase-8-verification.md) for validation and handoff. Academic names/roll numbers/guide were not supplied; add them before submission. Every member still needs to practise and record their own sign-off. Two scripted rehearsals are evidence of the implementation, not proof of personal practice. Optional Sepolia deployment remains pending.
+
+To regenerate the PDF after editing `docs/report.md`, run `python3 scripts/build-report.py` with ReportLab installed. The generator uses the local screenshots and preserves explicit report page breaks.
 
 ## Compile in Remix
 
@@ -123,4 +132,17 @@ Open [the local interface](http://localhost:8000) in a browser with MetaMask. Ad
 
 Anvil plus Remix deployment also works, following Phase 6 of the plan. The page shows the contract's unit duration (the demo uses **60 seconds**, not one day). After changing wallet accounts or networks, reconnect to refresh your role.
 
-Run `npm run test:phase6 --prefix tests` for the interface checks. See [Phase 6 verification](docs/phase-6-verification.md) for setup, tested workflows, and verification limits. Phase 7 public testnet deployment remains optional and pending.
+Run `npm run test:phase6 --prefix tests` for the interface checks. See [Phase 6 verification](docs/phase-6-verification.md) for setup, tested workflows, and verification limits.
+
+## Phase 7 — Sepolia deployment
+
+Started; **awaiting funded Sepolia accounts**. The deployment build, read-only funding/network checks, and small-value demo rehearsal are prepared. Public contracts and transaction links will be added after deployment and successful receipts; Phase 7 is not yet complete.
+
+See the [Phase 7 deployment and verification runbook](docs/phase-7-verification.md) for funding, exact Remix settings, deployment order, the 0.001 ETH deposit demo, and required Etherscan evidence.
+
+```sh
+npm run sepolia:build --prefix tests
+npm run test:phase7 --prefix tests
+```
+
+Build output is in `build/sepolia/` (ignored by Git), including the standard JSON compiler input and both contract artifacts. Wallet signing stays in MetaMask; no private keys are required by the preparation tools.

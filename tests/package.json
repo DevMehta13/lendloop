@@ -2,11 +2,13 @@
   "name": "lendloop-contract-checks",
   "private": true,
   "scripts": {
-    "test": "node phase-2.cjs && node phase-3.cjs && node phase-4.cjs && node phase-6.cjs",
+    "test": "node phase-2.cjs && node phase-3.cjs && node phase-4.cjs && node phase-6.cjs && node phase-7.cjs",
     "test:phase2": "node phase-2.cjs",
     "test:phase3": "node phase-3.cjs",
     "test:phase4": "node phase-4.cjs",
     "test:phase6": "node phase-6.cjs",
+    "test:phase7": "node phase-7.cjs",
+    "sepolia:build": "node ../scripts/sepolia.cjs build",
     "demo": "node ../scripts/local-demo.cjs"
   },
   "devDependencies": {
