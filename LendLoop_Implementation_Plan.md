@@ -586,6 +586,16 @@ lendLoop.on("RentalSettled", (id, toLender, toBorrower, lateFee) => {
 ```
 Serve it with `python3 -m http.server 8000` and open http://localhost:8000.
 
+**Completed 31 October 2026:** The buildless `frontend/index.html` implements wallet/role connection, five-argument listings, exact-payment quotes, role-aware rental actions, timeouts, balance withdrawals, and live event subscriptions. Additional controls cover admin student access, dispute resolution, and participant ratings. The local demo command deploys both contracts on a disposable chain with registered accounts and a sample item. Automated page-to-chain checks, existing contract regressions, and local browser visual inspection are recorded in `docs/phase-6-verification.md`. A manual MetaMask popup rehearsal and public testnet deployment are not claimed.
+
+- [x] Single HTML file with pinned ethers CDN and embedded current ABI
+- [x] Wallet connection, contract/network checks, account role display
+- [x] Listing form, item table, quote and exact-value rental request
+- [x] Status- and role-aware rental controls and timeout claims
+- [x] Pending balance and withdrawal
+- [x] Live contract event log
+- [x] Local deployment helper, interface tests, setup instructions, and preview screenshot
+
 ### Phase 7 — *(Optional)* Sepolia deployment (½ day)
 Only if you want real transaction links on Etherscan.
 - [ ] Fund 3–4 MetaMask accounts with Sepolia ETH (Section 2.3)

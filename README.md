@@ -4,7 +4,7 @@ Peer-to-peer campus item lending with smart-contract deposits.
 
 ## Current progress
 
-Phases 1–5 are complete. The escrow supports listing, reputation-discounted rentals, full cancellation refunds, handover/return, late-fee settlement, timeouts, admin-resolved disputes, participant ratings, and withdrawals. Two scripted rehearsals in fresh Remix VMs verify the complete demo; screenshots and all 44 lab concept line references are included. Phase 6 is optional.
+Phases 1–6 are complete. The escrow supports listing, reputation-discounted rentals, full cancellation refunds, handover/return, late-fee settlement, timeouts, admin-resolved disputes, participant ratings, and withdrawals. Two scripted rehearsals in fresh Remix VMs verify the complete demo; screenshots and all 44 lab concept line references are included. The optional Phase 6 wallet interface is implemented and verified locally.
 
 | File | Purpose |
 |---|---|
@@ -103,3 +103,24 @@ Source line links match the Phase 5 rehearsal revision. Event consumption is dem
 | 42 | Global variables | `msg.sender`, `msg.value`, `block.timestamp`, `address(this).balance` | [LendLoop.sol:180](contracts/LendLoop.sol#L180), [LendLoop.sol:217](contracts/LendLoop.sol#L217), [LendLoop.sol:324](contracts/LendLoop.sol#L324) |
 | 43 | Sending ETH | `call{value: ...}` in `withdraw` | [LendLoop.sol:314](contracts/LendLoop.sol#L314) |
 | 44 | Reentrancy protection | `nonReentrant` + checks-effects-interactions | [LendLoop.sol:95](contracts/LendLoop.sol#L95), [LendLoop.sol:310](contracts/LendLoop.sol#L310) |
+
+## Phase 6 — Wallet interface
+
+The single-file [wallet page](frontend/index.html) includes listings, exact-payment quotes, rental actions, admin student access and disputes, participant ratings, withdrawals, and live contract events. No frontend build is needed.
+
+For a fresh local demo, run these from the project root in separate terminals:
+
+```sh
+npm ci --prefix tests
+npm run demo --prefix tests
+```
+
+```sh
+python3 -m http.server 8000 --directory frontend
+```
+
+Open [the local interface](http://localhost:8000) in a browser with MetaMask. Add the printed local RPC network (chain **31337**), import the printed **public test accounts**, paste the printed LendLoop address, and connect. The demo starts with a configured deployment, three registered students, and a calculator listing. Keep the demo process running; restarting it resets the chain. Use only local test ETH with these public keys.
+
+Anvil plus Remix deployment also works, following Phase 6 of the plan. The page shows the contract's unit duration (the demo uses **60 seconds**, not one day). After changing wallet accounts or networks, reconnect to refresh your role.
+
+Run `npm run test:phase6 --prefix tests` for the interface checks. See [Phase 6 verification](docs/phase-6-verification.md) for setup, tested workflows, and verification limits. Phase 7 public testnet deployment remains optional and pending.
