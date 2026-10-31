@@ -494,12 +494,14 @@ After the code is written, fill in the **Line** column so you can jump straight 
 **Completed 31 October 2026:** Solidity 0.8.24 compiled all three helpers and a temporary verification contract with no errors or warnings. Ownership initialization, transfer events, access restrictions, and nine late-fee scenarios passed. See `docs/phase-1-verification.md` for results.
 
 ### Phase 2 — Reputation contract (½ day)
-- [ ] Implement `Reputation.sol` per Section 4.4
-- [ ] Deploy in Remix VM; call `setLendLoop` with any of your own account addresses (temporary, to test)
-- [ ] From that account call `recordCompletion` and `recordRating`; check `getProfile`, `averageRating`, `discountPercent`
-- [ ] From a different account call `recordCompletion` → must revert (`onlyLendLoop`)
+- [x] Implement `Reputation.sol` per Section 4.4
+- [x] Deploy in Remix VM; call `setLendLoop` with any of your own account addresses (temporary, to test)
+- [x] From that account call `recordCompletion` and `recordRating`; check `getProfile`, `averageRating`, `discountPercent`
+- [x] From a different account call `recordCompletion` → must revert (`onlyLendLoop`)
 
 **Done when:** discount tiers return 0 / 10 / 25 / 50 correctly.
+
+**Completed 31 October 2026:** Solidity 0.8.24 compiled all four contracts with no errors or warnings. Automated local-chain checks and a Remix VM deployment verified completion records, ratings, averages, all discount tiers, late-return penalties, and unauthorized-write rejection. The automated suite also covered configuration, ownership transfer, duplicate ratings, and events. See `docs/phase-2-verification.md` and `tests/phase-2.cjs`. Deploy a fresh Reputation instance for Phase 3 because the temporary writer configuration is permanent.
 
 ### Phase 3 — LendLoop core flow (1–1½ days)
 Build in this order, compiling after each step:
