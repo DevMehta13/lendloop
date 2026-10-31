@@ -520,16 +520,18 @@ Deploy order in Remix VM: **Reputation → LendLoop(reputationAddress, 60) → R
 **Completed 31 October 2026:** `contracts/LendLoop.sol` implements the core rental escrow. Solidity 0.8.24 compiles all five contracts without errors or warnings. Local-chain tests cover complete on-time and late rentals, rounded/capped fees, real reputation discounts, exact withdrawals, failed reputation updates, failed receivers, and reentrancy protection. Phase 2 regression checks also pass. See `docs/phase-3-verification.md` and `tests/phase-3.cjs`. `contractName()` was implemented early to make the inherited abstract contract deployable. Lateness is recorded from return/due timestamps, including zero-fee late returns.
 
 ### Phase 4 — Edge cases and remaining features (1 day)
-- [ ] `rejectRental`, `cancelRental` (refunds)
-- [ ] `claimTimeout` — both cases (lender silent / borrower never returns)
-- [ ] `raiseDispute`, `resolveDispute`
-- [ ] `rateUser` (calls Reputation)
-- [ ] `getUserRentals`, `getRental`, `setItemAvailability`
-- [ ] `receive`, `fallback` handlers
+- [x] `rejectRental`, `cancelRental` (refunds)
+- [x] `claimTimeout` — both cases (lender silent / borrower never returns)
+- [x] `raiseDispute`, `resolveDispute`
+- [x] `rateUser` (calls Reputation)
+- [x] `getUserRentals`, `getRental`, `setItemAvailability`
+- [x] `receive`, `fallback` handlers
 - [x] `contractName` override (implemented in Phase 3 for deployment)
-- [ ] Add `// [LAB] ...` comments for every concept in Section 5
+- [x] Add `// [LAB] ...` comments for every concept in Section 5
 
 **Done when:** every row of the test table in Section 8 passes.
+
+**Completed 31 October 2026:** All remaining escrow functions are implemented, with separate rental occupancy tracking to prevent availability overrides during an open rental. Solidity 0.8.24 compiles with no errors or warnings; unoptimized runtime is 22,819 bytes. All 21 Section 8 cases pass across the Phase 2–4 local-chain suites. New checks cover full refunds, exact timeout/dispute boundaries, defaults, admin deposit splits, two-way ratings, getters, payment handlers, and complete fund withdrawal. See `docs/phase-4-verification.md` and `tests/phase-4.cjs`. Remix rehearsal and screenshots remain Phase 5.
 
 ### Phase 5 — Demo rehearsal (½ day)
 - [ ] Run the full demo script (Section 7) from a fresh Remix VM at least twice

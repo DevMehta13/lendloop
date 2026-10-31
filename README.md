@@ -4,14 +4,14 @@ Peer-to-peer campus item lending with smart-contract deposits.
 
 ## Current progress
 
-Phases 1–3 are complete. The main escrow now supports listing, reputation-discounted rental requests, approval, handover, return, settlement, and withdrawals. Phase 4 adds cancellations, timeouts, disputes, ratings, and remaining convenience functions.
+Phases 1–4 are complete. The escrow supports listing, reputation-discounted rentals, full cancellation refunds, handover/return, late-fee settlement, timeouts, admin-resolved disputes, participant ratings, and withdrawals. The next phase is demo rehearsal and screenshots.
 
 | File | Purpose |
 |---|---|
 | `contracts/Owned.sol` | Shared admin ownership, restricted ownership transfer, and abstract contract naming |
 | `contracts/IReputation.sol` | Interface for completion records, ratings, and deposit discounts |
 | `contracts/LateFee.sol` | Pure late-fee calculation with rounded-up time units and a deposit cap |
-| `contracts/LendLoop.sol` | Core rental escrow, student registration, discounted deposits, late-fee settlement, and guarded pull-payment withdrawals |
+| `contracts/LendLoop.sol` | Complete rental escrow, refunds, timeouts, disputes, ratings, getters, and guarded pull-payment withdrawals |
 | `contracts/Reputation.sol` | Completion records, one rating per rental/rater, average ratings, and reputation-based deposit discounts |
 
 All files use `pragma solidity ^0.8.24`, require no external Solidity imports, and include `[LAB]` concept comments.
@@ -33,6 +33,8 @@ The Phase 1 helpers compiled without warnings or errors using Solidity 0.8.24. A
 Phase 2 compiled with zero errors or warnings using Solidity 0.8.24. Automated local-chain checks passed for all discount tiers, late-return penalties, rating validation, duplicate prevention, events, and ownership restrictions. The core flow also passed in Remix VM. See [Phase 2 verification](docs/phase-2-verification.md) for results and a step-by-step Remix check.
 
 Phase 3 compiled with zero errors or warnings using Solidity 0.8.24. Automated local-chain checks passed for full on-time and late rentals, real reputation discounts, exact payouts, fee caps, failed reputation updates, failed withdrawals, and reentrancy protection. See [Phase 3 verification](docs/phase-3-verification.md) for results and Remix reproduction steps.
+
+Phase 4 compiled with zero errors or warnings using Solidity 0.8.24. All 21 planned test cases pass across the automated suites, including exact timeout boundaries, refunds, dispute splits, duplicate ratings, locked-item availability, rejected direct transfers, and a zero final escrow balance. See [Phase 4 verification](docs/phase-4-verification.md) for results and Remix reproduction steps.
 
 Optional automated verification (Node.js required; Solidity files still need no external imports):
 
