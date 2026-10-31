@@ -399,7 +399,7 @@ function _settle(uint256 id) internal {                       // [LAB] internal 
     _credit(r.borrower, toBorrower);
 
     // [LAB] try/catch on an external call: a reputation failure must never block payouts
-    try reputation.recordCompletion(r.borrower, r.lender, fee > 0) {
+    try reputation.recordCompletion(r.borrower, r.lender, r.returnedAt > r.dueAt) {
     } catch {
         emit ReputationUpdateFailed(id);
     }
@@ -505,17 +505,19 @@ After the code is written, fill in the **Line** column so you can jump straight 
 
 ### Phase 3 — LendLoop core flow (1–1½ days)
 Build in this order, compiling after each step:
-- [ ] Types, state variables, errors, events, modifiers, constructor
-- [ ] `registerStudent`, `removeStudent`
-- [ ] Both `listItem` versions, `getItem`
-- [ ] `requiredPayment`, `_discountedDeposit`
-- [ ] `requestRental` (payable), `approveRental`, `confirmHandover`, `markReturned`
-- [ ] `_settle`, `_credit`, `confirmReturn`
-- [ ] `withdraw`, `pendingBalance`, `contractBalance`
+- [x] Types, state variables, errors, events, modifiers, constructor
+- [x] `registerStudent`, `removeStudent`
+- [x] Both `listItem` versions, `getItem`
+- [x] `requiredPayment`, `_discountedDeposit`
+- [x] `requestRental` (payable), `approveRental`, `confirmHandover`, `markReturned`
+- [x] `_settle`, `_credit`, `confirmReturn`
+- [x] `withdraw`, `pendingBalance`, `contractBalance`
 
 Deploy order in Remix VM: **Reputation → LendLoop(reputationAddress, 60) → Reputation.setLendLoop(lendLoopAddress)**.
 
 **Done when:** one full rental (request → approve → handover → return → confirm → both withdraw) works, and the late fee is deducted when returned late.
+
+**Completed 31 October 2026:** `contracts/LendLoop.sol` implements the core rental escrow. Solidity 0.8.24 compiles all five contracts without errors or warnings. Local-chain tests cover complete on-time and late rentals, rounded/capped fees, real reputation discounts, exact withdrawals, failed reputation updates, failed receivers, and reentrancy protection. Phase 2 regression checks also pass. See `docs/phase-3-verification.md` and `tests/phase-3.cjs`. `contractName()` was implemented early to make the inherited abstract contract deployable. Lateness is recorded from return/due timestamps, including zero-fee late returns.
 
 ### Phase 4 — Edge cases and remaining features (1 day)
 - [ ] `rejectRental`, `cancelRental` (refunds)
@@ -523,7 +525,8 @@ Deploy order in Remix VM: **Reputation → LendLoop(reputationAddress, 60) → R
 - [ ] `raiseDispute`, `resolveDispute`
 - [ ] `rateUser` (calls Reputation)
 - [ ] `getUserRentals`, `getRental`, `setItemAvailability`
-- [ ] `receive`, `fallback`, `contractName` overrides
+- [ ] `receive`, `fallback` handlers
+- [x] `contractName` override (implemented in Phase 3 for deployment)
 - [ ] Add `// [LAB] ...` comments for every concept in Section 5
 
 **Done when:** every row of the test table in Section 8 passes.

@@ -2,7 +2,9 @@
   "name": "lendloop-contract-checks",
   "private": true,
   "scripts": {
-    "test": "node phase-2.cjs"
+    "test": "node phase-2.cjs && node phase-3.cjs",
+    "test:phase2": "node phase-2.cjs",
+    "test:phase3": "node phase-3.cjs"
   },
   "devDependencies": {
     "ethers": "6.13.4",
