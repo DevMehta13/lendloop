@@ -427,50 +427,50 @@ After the code is written, fill in the **Line** column so you can jump straight 
 
 | # | Lab concept | Where | Line |
 |---|---|---|---|
-| 1 | Smart contract | `LendLoop`, `Reputation` | |
-| 2 | Abstract contract | `Owned` | |
-| 3 | Constructor (no params) | `Owned` | |
-| 4 | Constructor (with params) | `LendLoop(address, uint256)` | |
-| 5 | State variables | `itemCount`, `rentalCount`, `owner` | |
-| 6 | `constant` | `CONFIRM_WINDOW_UNITS`, `DEFAULT_AFTER_UNITS` | |
-| 7 | `immutable` | `reputation`, `timeUnit` | |
-| 8 | **public** function | `listItem` (5-arg), `requiredPayment`, `transferOwnership` | |
-| 9 | **external** function | `requestRental`, `withdraw`, `approveRental`, … | |
-| 10 | **internal** function | `_settle`, `_transferOwnership` | |
-| 11 | **private** function | `_discountedDeposit`, `_credit` | |
-| 12 | public state variable (auto getter) | `owner`, `items`, `rentals`, `isStudent` | |
-| 13 | private state variable | `pendingWithdrawals`, `locked`, `profiles` | |
-| 14 | `view` function | `pendingBalance`, `getItem`, `discountPercent` | |
-| 15 | `pure` function | `LateFee.calculate`, `contractName` | |
-| 16 | `payable` function | `requestRental` | |
-| 17 | `receive()` | `LendLoop` | |
-| 18 | `fallback()` | `LendLoop` | |
-| 19 | Modifier | `onlyOwner`, `onlyStudent`, `nonReentrant` | |
-| 20 | Modifier with parameters | `inStatus(id, status)`, `onlyLender(id)` | |
-| 21 | Event declaration | all events in `LendLoop` | |
-| 22 | `indexed` event params | `RentalRequested` | |
-| 23 | Emitting events | every state-changing function | |
-| 24 | Listening to events | Remix logs / `contract.on(...)` in index.html | |
-| 25 | `struct` | `Item`, `Rental`, `Profile` | |
-| 26 | `enum` | `Status` | |
-| 27 | `mapping` | `items`, `rentals`, `isStudent` | |
-| 28 | Nested mapping | `hasRated[rentalId][addr]` | |
-| 29 | Arrays | `userRentals` → `uint256[]` | |
-| 30 | `require` | input checks everywhere | |
-| 31 | Custom error + `revert` | `NotAStudent`, `InvalidStatus`, `TooEarly` | |
-| 32 | `assert` | `_settle` | |
-| 33 | Inheritance | `LendLoop is Owned` | |
-| 34 | Multiple inheritance | `Reputation is Owned, IReputation` | |
-| 35 | `virtual` / `override` | `contractName()`, `transferOwnership` | |
-| 36 | Interface | `IReputation` | |
-| 37 | Library | `LateFee` | |
-| 38 | Contract-to-contract call | `LendLoop` → `Reputation` | |
-| 39 | `try` / `catch` | `_settle` | |
-| 40 | Function overloading | two `listItem` versions | |
-| 41 | Data locations | `storage` in `_settle`, `memory` returns, `calldata` reason | |
-| 42 | Global variables | `msg.sender`, `msg.value`, `block.timestamp`, `address(this).balance` | |
-| 43 | Sending ETH | `call{value: ...}` in `withdraw` | |
-| 44 | Reentrancy protection | `nonReentrant` + checks-effects-interactions | |
+| 1 | Smart contract | `LendLoop`, `Reputation` | [LendLoop.sol:9](contracts/LendLoop.sol#L9), [Reputation.sol:8](contracts/Reputation.sol#L8) |
+| 2 | Abstract contract | `Owned` | [Owned.sol:5](contracts/Owned.sol#L5) |
+| 3 | Constructor (no params) | `Owned` | [Owned.sol:11](contracts/Owned.sol#L11) |
+| 4 | Constructor (with params) | `LendLoop(address, uint256)` | [LendLoop.sol:102](contracts/LendLoop.sol#L102) |
+| 5 | State variables | `itemCount`, `rentalCount`, `owner` | [LendLoop.sol:41](contracts/LendLoop.sol#L41), [Owned.sol:6](contracts/Owned.sol#L6) |
+| 6 | `constant` | `CONFIRM_WINDOW_UNITS`, `DEFAULT_AFTER_UNITS` | [LendLoop.sol:37](contracts/LendLoop.sol#L37) |
+| 7 | `immutable` | `reputation`, `timeUnit` | [LendLoop.sol:39](contracts/LendLoop.sol#L39) |
+| 8 | **public** function | `listItem` (5-arg), `requiredPayment`, `transferOwnership` | [LendLoop.sol:120](contracts/LendLoop.sol#L120), [Owned.sol:22](contracts/Owned.sol#L22) |
+| 9 | **external** function | `requestRental`, `withdraw`, `approveRental`, … | [LendLoop.sol:190](contracts/LendLoop.sol#L190) |
+| 10 | **internal** function | `_settle`, `_transferOwnership` | [LendLoop.sol:285](contracts/LendLoop.sol#L285), [Owned.sol:27](contracts/Owned.sol#L27) |
+| 11 | **private** function | `_discountedDeposit`, `_credit` | [LendLoop.sol:168](contracts/LendLoop.sol#L168), [LendLoop.sol:306](contracts/LendLoop.sol#L306) |
+| 12 | public state variable (auto getter) | `owner`, `items`, `rentals`, `isStudent` | [Owned.sol:6](contracts/Owned.sol#L6), [LendLoop.sol:43](contracts/LendLoop.sol#L43) |
+| 13 | private state variable | `pendingWithdrawals`, `locked`, `profiles` | [LendLoop.sol:47](contracts/LendLoop.sol#L47), [Reputation.sol:18](contracts/Reputation.sol#L18) |
+| 14 | `view` function | `pendingBalance`, `getItem`, `discountPercent` | [LendLoop.sol:319](contracts/LendLoop.sol#L319), [Reputation.sol:60](contracts/Reputation.sol#L60) |
+| 15 | `pure` function | `LateFee.calculate`, `contractName` | [LateFee.sol:15](contracts/LateFee.sol#L15), [LendLoop.sol:335](contracts/LendLoop.sol#L335) |
+| 16 | `payable` function | `requestRental` | [LendLoop.sol:174](contracts/LendLoop.sol#L174) |
+| 17 | `receive()` | `LendLoop` | [LendLoop.sol:327](contracts/LendLoop.sol#L327) |
+| 18 | `fallback()` | `LendLoop` | [LendLoop.sol:331](contracts/LendLoop.sol#L331) |
+| 19 | Modifier | `onlyOwner`, `onlyStudent`, `nonReentrant` | [Owned.sol:16](contracts/Owned.sol#L16), [LendLoop.sol:95](contracts/LendLoop.sol#L95) |
+| 20 | Modifier with parameters | `inStatus(id, status)`, `onlyLender(id)` | [LendLoop.sol:89](contracts/LendLoop.sol#L89), [LendLoop.sol:79](contracts/LendLoop.sol#L79) |
+| 21 | Event declaration | all events in `LendLoop` | [LendLoop.sol:57](contracts/LendLoop.sol#L57) |
+| 22 | `indexed` event params | `RentalRequested` | [LendLoop.sol:60](contracts/LendLoop.sol#L60) |
+| 23 | Emitting events | every state-changing function | [LendLoop.sol:112](contracts/LendLoop.sol#L112) |
+| 24 | Listening to events | Remix logs / `contract.on(...)` in index.html | [Decoded Remix receipt logs](scripts/demo-runner.js#L12); [screenshots](docs/phase-5-verification.md) |
+| 25 | `struct` | `Item`, `Rental`, `Profile` | [LendLoop.sol:13](contracts/LendLoop.sol#L13), [Reputation.sol:9](contracts/Reputation.sol#L9) |
+| 26 | `enum` | `Status` | [LendLoop.sol:11](contracts/LendLoop.sol#L11) |
+| 27 | `mapping` | `items`, `rentals`, `isStudent` | [LendLoop.sol:43](contracts/LendLoop.sol#L43) |
+| 28 | Nested mapping | `hasRated[rentalId][addr]` | [Reputation.sol:19](contracts/Reputation.sol#L19) |
+| 29 | Arrays | `userRentals` → `uint256[]` | [LendLoop.sol:46](contracts/LendLoop.sol#L46), [LendLoop.sol:145](contracts/LendLoop.sol#L145) |
+| 30 | `require` | input checks everywhere | [LendLoop.sol:123](contracts/LendLoop.sol#L123) |
+| 31 | Custom error + `revert` | `NotAStudent`, `InvalidStatus`, `TooEarly` | [LendLoop.sol:52](contracts/LendLoop.sol#L52), [LendLoop.sol:75](contracts/LendLoop.sol#L75) |
+| 32 | `assert` | `_settle` | [LendLoop.sol:247](contracts/LendLoop.sol#L247) |
+| 33 | Inheritance | `LendLoop is Owned` | [LendLoop.sol:9](contracts/LendLoop.sol#L9) |
+| 34 | Multiple inheritance | `Reputation is Owned, IReputation` | [Reputation.sol:8](contracts/Reputation.sol#L8) |
+| 35 | `virtual` / `override` | `contractName()`, `transferOwnership` | [Owned.sol:33](contracts/Owned.sol#L33), [LendLoop.sol:335](contracts/LendLoop.sol#L335) |
+| 36 | Interface | `IReputation` | [IReputation.sol:5](contracts/IReputation.sol#L5) |
+| 37 | Library | `LateFee` | [LateFee.sol:6](contracts/LateFee.sol#L6) |
+| 38 | Contract-to-contract call | `LendLoop` → `Reputation` | [LendLoop.sol:281](contracts/LendLoop.sol#L281) |
+| 39 | `try` / `catch` | `_settle` | [LendLoop.sol:299](contracts/LendLoop.sol#L299) |
+| 40 | Function overloading | two `listItem` versions | [LendLoop.sol:120](contracts/LendLoop.sol#L120), [LendLoop.sol:131](contracts/LendLoop.sol#L131) |
+| 41 | Data locations | `storage` in `_settle`, `memory` returns, `calldata` reason | [LendLoop.sol:206](contracts/LendLoop.sol#L206), [LendLoop.sol:135](contracts/LendLoop.sol#L135), [LendLoop.sol:231](contracts/LendLoop.sol#L231) |
+| 42 | Global variables | `msg.sender`, `msg.value`, `block.timestamp`, `address(this).balance` | [LendLoop.sol:180](contracts/LendLoop.sol#L180), [LendLoop.sol:217](contracts/LendLoop.sol#L217), [LendLoop.sol:324](contracts/LendLoop.sol#L324) |
+| 43 | Sending ETH | `call{value: ...}` in `withdraw` | [LendLoop.sol:314](contracts/LendLoop.sol#L314) |
+| 44 | Reentrancy protection | `nonReentrant` + checks-effects-interactions | [LendLoop.sol:95](contracts/LendLoop.sol#L95), [LendLoop.sol:310](contracts/LendLoop.sol#L310) |
 
 ---
 
@@ -534,12 +534,14 @@ Deploy order in Remix VM: **Reputation → LendLoop(reputationAddress, 60) → R
 **Completed 31 October 2026:** All remaining escrow functions are implemented, with separate rental occupancy tracking to prevent availability overrides during an open rental. Solidity 0.8.24 compiles with no errors or warnings; unoptimized runtime is 22,819 bytes. All 21 Section 8 cases pass across the Phase 2–4 local-chain suites. New checks cover full refunds, exact timeout/dispute boundaries, defaults, admin deposit splits, two-way ratings, getters, payment handlers, and complete fund withdrawal. See `docs/phase-4-verification.md` and `tests/phase-4.cjs`. Remix rehearsal and screenshots remain Phase 5.
 
 ### Phase 5 — Demo rehearsal (½ day)
-- [ ] Run the full demo script (Section 7) from a fresh Remix VM at least twice
-- [ ] Take screenshots of each step for the report (`docs/screenshots/`)
-- [ ] Fill in line numbers in the concept map
-- [ ] Commit everything to GitHub
+- [x] Run the full demo script (Section 7) from a fresh Remix VM at least twice
+- [x] Take screenshots of each step for the report (`docs/screenshots/`)
+- [x] Fill in line numbers in the concept map
+- [x] Commit everything to GitHub
 
 **Done when:** the full demo runs in under 10 minutes without errors.
+
+**Completed 31 October 2026:** Two scripted full-demo rehearsals in separate fresh Remix VM sessions passed all 16 steps in 248.864 and 249.795 seconds, using real timing windows. Both end with zero escrow balance. All 32 step screenshots, both transcripts, a reproducible Remix runner, and all 44 concept-map source references are included. Phase 2–4 regression suites pass. See `docs/phase-5-verification.md`. The Phase 5 commit includes all rehearsal artifacts and is published to the configured GitHub repository.
 
 ### Phase 6 — *(Optional)* One-page HTML site (½–1 day)
 Only do this if the examiner wants a UI. No React, no build tools — one `index.html` file.

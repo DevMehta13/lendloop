@@ -1,0 +1,15 @@
+{
+  "compiler": "0.8.24+commit.e11b9ed9.Emscripten.clang",
+  "optimizer": false,
+  "sha256": {
+    "contracts/IReputation.sol": "c7709f34b4d14545928c6a098c8385435d3ec92552576bf60ba6539ef3896ea1",
+    "contracts/LateFee.sol": "69857ef2058431ebb210c2063189ff708a1d768ff75c19adacba5fcda383c920",
+    "contracts/LendLoop.sol": "5933c04763df8f38aa22a7cfbac9330da28b2c408f04407ff278ee555c63332a",
+    "contracts/Owned.sol": "07e0fa8885df8dece4c5f7719e2d589203f9bd753e32a01757e9c1ed12b97575",
+    "contracts/Reputation.sol": "5cc69bca62dd0729dc17715abec17e20a41814662d8384ab75bb2bb79c157f64",
+    "scripts/build-demo.cjs": "97a5675ba73202da13010eb9f15b61c82f791b176c7c43e0f618ad0a8d180f79",
+    "scripts/demo-runner.js": "c6d1afcb73fea25e7750e81688a4ba705bdcc59194568a51c5b52d2cdbc04726",
+    "scripts/phase-5-auto.txt": "d1e16128be4f72060c029bf7297a5da06977c95f6586248ae6c832a6d0fc8930",
+    "scripts/phase-5-remix.js": "ce7de460a4129c0d5e54826bf04d619c177b2b8e1876b328dd02fcd795fd273b"
+  }
+}
